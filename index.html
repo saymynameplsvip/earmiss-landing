@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>earmiss — телеграм бот для преобразования голосовых сообщений в конспекты</title>
+  <meta name="description" content="Бесплатный Telegram-бот earmiss: превращает голосовые сообщения в читабельные конспекты без таймкодов. Удобно, быстро и естественно." />
+  <meta name="keywords" content="earmiss, телеграм бот, конспекты из голоса, распознавание речи, голос в текст, заметки, бесплатно" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://earmiss.example" />
+  <link rel="icon" type="image/x-icon" href="./favicon.ico">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="earmiss — бот для конспектов из голосовых в Telegram" />
+  <meta property="og:description" content="Преобразуйте голосовые сообщения в Telegram в красивые и естественные конспекты — абсолютно бесплатно." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://earmiss.example" />
+  <meta property="og:image" content="https://earmiss.example/preview.png" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "earmiss",
+    "operatingSystem": "All",
+    "applicationCategory": "ChatbotApplication",
+    "description": "Бесплатный Telegram-бот earmiss: преобразует голосовые сообщения в удобные конспекты без таймкодов.",
+    "url": "https://earmiss.example",
+    "image": "https://earmiss.example/preview.png",
+    "author": {
+      "@type": "Organization",
+      "name": "earmiss team",
+      "url": "https://earmiss.example"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB"
+    },
+    "featureList": [
+      "Автоматическое распознавание речи",
+      "Естественные конспекты без таймкодов",
+      "Экспорт в PDF, TXT, Google Drive, Notion, e-mail",
+      "Поддержка нескольких языков",
+      "Конфиденциальность и автоудаление"
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+  .glass { background: linear-gradient(135deg, rgba(255,111,97,0.2), rgba(255,248,231,0.1)); backdrop-filter: blur(6px); }
+  .brand { color: rgba(255,111,97,0.8); }
+  .accent { color: #FF6F61; }
+  .btn-telega { background: linear-gradient(90deg, rgba(255,111,97,0.8), #FF6F61); transition: all 0.3s; }
+  .btn-telega:hover { opacity: 0.9; transform: translateY(-2px); }
+  .note-section { background-color: #fdfdfd; padding: 1rem; border-radius: 8px; margin-top: 15px; border-left: 5px solid #FF6F61; }
+  .note-section h3 { font-weight: 600; margin-bottom: 5px; }
+  .scroll-container { max-height: 400px; overflow-y: auto; padding-right: 10px; }
+  /* Стили для плавного скролла */
+  .scroll-container::-webkit-scrollbar { width: 8px; }
+  .scroll-container::-webkit-scrollbar-thumb { background-color: rgba(255,111,97,0.5); border-radius: 4px; }
+  .scroll-container::-webkit-scrollbar-track { background: rgba(255,248,231,0.3); border-radius: 4px; }
+  </style>
+</head>
+<body class="antialiased text-gray-800 bg-[#FFF8E7]">
+  <header class="max-w-6xl mx-auto px-6 py-8 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg flex items-center justify-center"> 
+        <img width="60" height="60" src="./logotype.svg">
+    </div>
+      <div>
+        <div class="text-xl font-semibold brand">earmiss</div>
+        <div class="text-sm text-gray-600">Бесплатный Telegram-бот: голос → конспект</div>
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-6 items-center text-gray-700">
+      <a href="#features" class="hover:underline">Функции</a>
+      <a href="#how" class="hover:underline">Как работает</a>
+      <a href="#faq" class="hover:underline">FAQ</a>
+      <a href="https://t.me/earmiss" target="_blank" class="px-4 py-2 rounded-md btn-telega text-white font-semibold shadow">Запустить в Telegram</a>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6">
+
+    <!-- Hero Section -->
+    <section class="grid md:grid-cols-2 gap-10 items-center my-12">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">earmiss — бесплатный бот, который превращает голосовые в конспекты.</h1>
+        <p class="mt-4 text-gray-700 text-lg">Telegram-бот <strong>earmiss</strong> слушает ваши голосовые сообщения и возвращает структурированный текст — будто со страниц учебника.</p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://t.me/earmiss" target="_blank" class="inline-flex items-center gap-3 px-5 py-3 rounded-lg btn-telega shadow font-semibold">Открыть бота в Telegram</a>
+          <a href="#how" class="px-5 py-3 rounded-lg glass border border-[rgba(255,111,97,0.8)] text-gray-800 font-semibold">Как это работает</a>
+        </div>
+
+        <div class="mt-8 grid grid-cols-2 gap-3 text-sm text-gray-700">
+          <div class="p-4 glass rounded-lg">
+            <div class="font-semibold">Бесплатно</div>
+            <div>earmiss бесплатный, без скрытых платежей и подписок.</div>
+          </div>
+          <div class="p-4 glass rounded-lg">
+            <div class="font-semibold">Естественно</div>
+            <div>Конспект выглядит так, будто написан человеком — без таймкодов и сухости.</div>
+          </div>
+          <div class="p-4 glass rounded-lg">
+            <div class="font-semibold">Быстро</div>
+            <div>Текст за секунды, без ручного набора.</div>
+          </div>
+          <div class="p-4 glass rounded-lg">
+            <div class="font-semibold">Конфиденциально</div>
+            <div>Ваши данные под вашим контролем: автоудаление, экспорт, хранение.</div>
+          </div>
+        </div>
+      </div>
+
+    <div class="relative flex justify-center">
+      <div class="rounded-2xl overflow-hidden shadow-2xl border border-[rgba(255,111,97,0.8)] max-w-sm w-full">
+        <div class="p-6 bg-[#FFF8E7] scroll-container">
+          <div class="text-center mb-4 font-semibold text-lg accent">Пример конспекта</div>
+            <div class="note-section">
+            <h3>Краткое резюме лекции</h3>
+            <p>Лекция рассматривает время как самый важный ресурс и предлагает несколько ключевых принципов для его эффективного использования.</p>
+          </div>
+          <div class="note-section">
+            <h3>Методы и принципы управления временем</h3>
+            <p><strong>Правило двух минут:</strong> Немедленно выполняйте мелкие задачи, если они занимают меньше двух минут.</p>
+            <p><strong>Матрица Эйзенхауэра:</strong> Приоритизируйте крупные дела по важности и срочности.</p>
+          <p><strong>Цикличная работа:</strong> Работайте циклами по 90 минут с короткими перерывами.</p>
+          </div>
+          <div class="note-section">
+            <h3>Принцип делегирования</h3>
+            <p>Делегируйте задачи, которые не требуют ваших ключевых навыков.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+    <section id="features" class="my-12">
+      <h2 class="text-2xl font-bold text-gray-900">Функции earmiss</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="p-6 glass rounded-lg">
+          <div class="font-semibold text-lg">Автоматическое распознавание</div>
+          <div class="mt-2 text-gray-700">Поддержка нескольких языков, пунктуация и структурирование текста.</div>
+        </div>
+        <div class="p-6 glass rounded-lg">
+          <div class="font-semibold text-lg">Естественный конспект</div>
+          <div class="mt-2 text-gray-700">Без сухости — текст как будто писал человек.</div>
+        </div>
+        <!-- <div class="p-6 glass rounded-lg">
+          <div class="font-semibold text-lg">Экспорт и интеграции</div>
+          <div class="mt-2 text-gray-700">PDF/TXT, Google Drive, Notion, e-mail.</div>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- How it works Section -->
+    <section id="how" class="my-12">
+      <h2 class="text-2xl font-bold text-gray-900">Как работает earmiss</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="p-6 glass rounded-lg">
+          <div class="text-xl font-semibold">1. Отправьте голос</div>
+          <div class="mt-2 text-gray-700">Бот принимает голосовые сообщения, и более 10 форматов аудиофайлов.</div>
+        </div>
+        <div class="p-6 glass rounded-lg">
+          <div class="text-xl font-semibold">2. Обработка</div>
+          <div class="mt-2 text-gray-700">Речь преобразуется в связный конспект.</div>
+        </div>
+        <div class="p-6 glass rounded-lg">
+          <div class="text-xl font-semibold">3. Готовый конспект</div>
+          <div class="mt-2 text-gray-700">Вы получаете красивый конспект готовый к чтению.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="my-12">
+      <h2 class="text-2xl font-bold text-gray-900">FAQ про earmiss</h2>
+      <div class="mt-6 space-y-4">
+          <details class="p-4 glass rounded-lg">
+          <summary class="font-semibold">Нужно ли предварительно обрабатывать запись лекции?</summary>
+          <div class="mt-2 text-gray-700">Нет, вы можете сразу присылать аудиозапись без предварительной обработки. Лишняя информация не помешает генерации конспекта.</div>
+        </details>
+        <details class="p-4 glass rounded-lg">
+          <summary class="font-semibold">Как бот обрабатывает голосовые сообщения?</summary>
+          <div class="mt-2 text-gray-700">Современные модели распознавания речи создают связный, естественный текст.</div>
+        </details>
+        <details class="p-4 glass rounded-lg">
+          <summary class="font-semibold">Поддерживаются ли языки кроме русского?</summary>
+          <div class="mt-2 text-gray-700">Да, бот поддерживает несколько языков.</div>
+        </details>
+        <details class="p-4 glass rounded-lg">
+          <summary class="font-semibold">В каком формате возвращаются конспекты?</summary>
+          <div class="mt-2 text-gray-700">На данный момент в формате HTML.</div>
+        </details>
+      </div>
+    </section>
+
+    <footer class="py-10 text-gray-600 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-[rgba(255,111,97,0.8)]">
+      <div>&copy; 2025 earmiss — телеграм-бот для генерации конспектов из аудио</div>
+      <div class="flex gap-4 items-center">
+        <a href="/privacy.html" class="text-gray-700">Политика конфиденциальности</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
