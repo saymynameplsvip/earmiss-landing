@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function NoteSection({ title, children }) {
   return (
     <div className="note-section">

@@ -1,3 +1,16 @@
+:root {
+  --background-color: #FFF8F0;
+  --note-section-background-color: #fdfdfd;
+  --text-color: #1F2937;
+  --text-muted: #5d6877;
+}
+
+.dark {
+  --background-color: #1E1E1E;
+  --note-section-background-color: #1F2937;
+  --text-color: #fff;
+  --text-muted: rgb(63, 63, 63);
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,10 +18,98 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FFF8F0;
+  background-color: var(--background-color);
+  }
+  
+  .ce-paragraph {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--text-color);
+    /* переменная темы */
+    margin-bottom: 1em;
+  }
+
+  .ce-header {
+    color: var(--text-color);
+  }
+
+  .ce-header.h1, .ce-header[data-level="1"], h1.ce-header {
+      font-size: 36px;
+      font-weight: 700;
+  }
+
+  /* H2 */
+  .ce-header.h2, .ce-header[data-level="2"], h2.ce-header {
+      font-size: 28px;
+      font-weight: 600;
+  }
+
+  /* H3 */
+  .ce-header.h3, .ce-header[data-level="3"], h3.ce-header {
+      font-size: 22px;
+      font-weight: 500;
+  }
+  
+  .ce-quote {
+    border-left: 4px solid var(--accent-color);
+    /* акцентная полоса */
+    padding-left: 1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin: 1rem 0;
+  }
+  /* Восстанавливаем точки для ul внутри ce-math-list */
+.ce-math-list ul {
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+  padding-left: 2em !important;
+  margin: 0.5em 0 !important;
 }
 
+
+.ce-math-list__item {
+  display: list-item !important;
+  white-space: pre-wrap;
+}
+.ce-math-list__item-content {
+  display: inline; /* если нужно для текста, bullets будут видны на родителе li */
+}
+
+
+/* Сбрасываем outline при фокусе */
+.ce-math-list__item:focus {
+  outline: none;
+}
+
+  
+  
+  /* Контейнер цитаты */
+  .cdx-quote {
+    @apply relative border-l-4 pl-6 py-4 my-6 rounded-md bg-[var(--quote-bg)] shadow-sm;
+  }
+
+  /* Текст цитаты */
+  .cdx-quote__text {
+    @apply text-lg italic text-[var(--text-color)] leading-relaxed;
+    position: relative;
+    border: none;
+  }
+  
+  /* Большая кавычка слева */
+  .cdx-quote__text::before {
+    @apply absolute left-0 top-0 text-4xl text-[var(--accent-color)];
+    content: "“";
+  }
+  
+  /* Автор цитаты */
+  .cdx-quote__caption {
+    @apply block mt-3 text-right text-sm font-semibold text-[var(--text-muted)];
+    border: none;
+  }
+
+
 code {
+  color: var(--text-muted);
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
@@ -18,12 +119,21 @@ code {
 .accent { color: #FF6F61; }
 .btn-telega { background: linear-gradient(90deg, rgba(255,111,97,0.8), #FF6F61); transition: all 0.3s; }
 .btn-telega:hover { opacity: 0.9; transform: translateY(-2px); }
-.note-section { background-color: #fdfdfd; padding: 1rem; border-radius: 8px; margin-top: 15px; border-left: 5px solid #FF6F61; }
+.note-section {
+  background-color: var(--note-section-background-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 5px solid #FF6F61;
+}
 .note-section h3 { font-weight: 600; margin-bottom: 5px; }
 .scroll-container { max-height: 400px; overflow-y: auto; padding-right: 10px; }
 .scroll-container::-webkit-scrollbar { width: 8px; }
 .scroll-container::-webkit-scrollbar-thumb { background-color: rgba(255,111,97,0.5); border-radius: 4px; }
 .scroll-container::-webkit-scrollbar-track { background: rgba(255,248,231,0.3); border-radius: 4px; }
+a {
+  color: var(--text-color);
+}
 
 .katex {
   max-width: 100%;
