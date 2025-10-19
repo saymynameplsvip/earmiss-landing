@@ -122,9 +122,9 @@ export default function QueryPage() {
       }
     },
     {
-      "type": "paragraph",
+      "type": "formula",
       "data": {
-        "text": "$$ЛЧ_5 = ЛЧ_1 \\times К_{тар5}$$"
+        "text": "ЛЧ_5 = ЛЧ_1 \\times К_{тар5}"
       }
     },
     {
@@ -177,9 +177,9 @@ export default function QueryPage() {
       }
     },
     {
-      "type": "paragraph",
+      "type": "formula",
       "data": {
-        "text": "$$Н_{выр} = \\frac{60 \\text{ мин}}{N_{вр}}$$"
+        "text": "Н_{выр} = \\frac{60 \\text{ мин}}{N_{вр}}"
       }
     },
     {
@@ -966,9 +966,9 @@ export default function QueryPage() {
       }
     },
     {
-      "type": "paragraph",
+      "type": "formula",
       "data": {
-        "text": "$$ЗП_{прем} = Оклад + Премия$$"
+        "text": "ЗП_{прем} = Оклад + Премия"
       }
     },
     {
@@ -1126,9 +1126,9 @@ export default function QueryPage() {
       }
     },
     {
-      "type": "paragraph",
+      "type": "formula",
       "data": {
-        "text": "$$ЛЧ_4 = ЛЧ_1 \\times К_{тар4}$$"
+        "text": "ЛЧ_4 = ЛЧ_1 \\times К_{тар4}"
       }
     },
     {
@@ -1181,9 +1181,9 @@ export default function QueryPage() {
       }
     },
     {
-      "type": "paragraph",
+      "type": "formula",
       "data": {
-        "text": "$$Н_{выр} = \\frac{60 \\text{ мин}}{N_{вр}}$$"
+        "text": "Н_{выр} = \\frac{60 \\text{ мин}}{N_{вр}}"
       }
     },
     {
@@ -1229,9 +1229,9 @@ export default function QueryPage() {
       }
     },
     {
-      "type": "paragraph",
+      "type": "formula",
       "data": {
-        "text": "$$P_i = \\frac{ЛЧ_4}{Н_{выр}}$$"
+        "text": "P_i = \\frac{ЛЧ_4}{Н_{выр}}"
       }
     },
     {

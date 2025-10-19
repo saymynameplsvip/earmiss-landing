@@ -14,24 +14,33 @@ export default class ModernParagraph {
     this.data = {
       text: data.text || ''
     };
-    this.readOnly = readOnly; // Editor.js передаст true/false
+    this.readOnly = readOnly;
     this.wrapper = undefined;
+    this.textarea = undefined;
   }
 
   render() {
     this.wrapper = document.createElement('div');
-
     this.textarea = document.createElement('div');
-
-    // Editor.js будет сам блокировать редактирование
-    if (!this.readOnly) {
-      this.textarea.contentEditable = true;
-    }
-
     this.textarea.classList.add('ce-paragraph');
     this.textarea.innerHTML = this.data.text;
 
-    // Рендер LaTeX формул
+    if (!this.readOnly) {
+      this.textarea.contentEditable = true;
+
+      // Показывать исходный текст при фокусе
+      this.textarea.addEventListener('focus', () => {
+        this.textarea.innerHTML = this.data.text;
+      });
+
+      // При потере фокуса — рендерить LaTeX обратно
+      this.textarea.addEventListener('blur', () => {
+        this.data.text = this.textarea.innerHTML;
+        this.renderMath();
+      });
+    }
+
+    // При первом отображении рендерим формулы
     this.renderMath();
 
     this.wrapper.appendChild(this.textarea);
@@ -50,8 +59,10 @@ export default class ModernParagraph {
       return;
     }
 
+    let html = this.data.text;
+
     // display-формулы: $$...$$
-    this.textarea.innerHTML = this.textarea.innerHTML.replace(/\$\$([^$]+)\$\$/g, (match, tex) => {
+    html = html.replace(/\$\$([^$]+)\$\$/g, (match, tex) => {
       try {
         return katex.renderToString(tex, { displayMode: true });
       } catch (e) {
@@ -61,7 +72,7 @@ export default class ModernParagraph {
     });
 
     // inline-формулы: $...$
-    this.textarea.innerHTML = this.textarea.innerHTML.replace(/\$([^$]+)\$/g, (match, tex) => {
+    html = html.replace(/\$([^$]+)\$/g, (match, tex) => {
       try {
         return katex.renderToString(tex, { displayMode: false });
       } catch (e) {
@@ -69,6 +80,8 @@ export default class ModernParagraph {
         return match;
       }
     });
+
+    this.textarea.innerHTML = html;
   }
 
   static get enableLineBreaks() {
@@ -90,7 +103,6 @@ export default class ModernParagraph {
     };
   }
 
-  // Эта опция сообщает Editor.js, что инструмент поддерживает read-only
   static get isReadOnlySupported() {
     return true;
   }

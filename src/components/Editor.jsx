@@ -4,6 +4,7 @@ import Header from '@editorjs/header';
 import Quote from '@editorjs/quote';
 import ModernParagraph from "../editor/paragraph";
 import List from "../editor/list";
+import Formula from "../editor/formula";
 
 
 function Editor({ data, onChange, editorBlock }) {
@@ -35,6 +36,10 @@ function Editor({ data, onChange, editorBlock }) {
                     },
                     paragraph: {
                         class: ModernParagraph,
+                        inlineToolbar: true
+                    },
+                    formula: {
+                        class: Formula,
                         inlineToolbar: true
                     }
                 }
