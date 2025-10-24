@@ -81,31 +81,51 @@ body {
   outline: none;
 }
 
-  
-  
-  /* Контейнер цитаты */
-  .cdx-quote {
-    @apply relative border-l-4 pl-6 py-4 my-6 rounded-md bg-[var(--quote-bg)] shadow-sm;
-  }
+.cdx-list__item-content {
+  color: var(--text-color);
+}
+ 
+.cdx-list__item {
+  color: var(--text-color);
+}
 
-  /* Текст цитаты */
-  .cdx-quote__text {
-    @apply text-lg italic text-[var(--text-color)] leading-relaxed;
-    position: relative;
-    border: none;
-  }
-  
-  /* Большая кавычка слева */
-  .cdx-quote__text::before {
-    @apply absolute left-0 top-0 text-4xl text-[var(--accent-color)];
-    content: "“";
-  }
-  
-  /* Автор цитаты */
-  .cdx-quote__caption {
-    @apply block mt-3 text-right text-sm font-semibold text-[var(--text-muted)];
-    border: none;
-  }
+.katex-inline,
+.katex-inline *,
+.mord,
+.mord *,
+.katex-display,
+.katex-display * {
+  color: var(--text-color) !important;
+}
+
+.katex-inline *,
+.katex-display * {
+  color: inherit !important;
+}
+
+/* Контейнер цитаты */
+.cdx-quote {
+  @apply relative border-l-4 pl-6 py-4 my-6 rounded-md bg-[var(--quote-bg)] shadow-sm;
+}
+
+/* Текст цитаты */
+.cdx-quote__text {
+  @apply text-lg italic text-[var(--text-color)] leading-relaxed;
+  position: relative;
+  border: none;
+}
+
+/* Большая кавычка слева */
+.cdx-quote__text::before {
+  @apply absolute left-0 top-0 text-4xl text-[var(--accent-color)];
+  content: "“";
+}
+
+/* Автор цитаты */
+.cdx-quote__caption {
+  @apply block mt-3 text-right text-sm font-semibold text-[var(--text-muted)];
+  border: none;
+}
 
 
 code {
