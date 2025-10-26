@@ -181,7 +181,7 @@ function Editor({ data, loading, error }) {
       </div>
     );
   }
-  console.log(error)
+
   if (error && error.status === 404) {
     return (
       <div className="text-center py-20 text-[var(--text-color)]" style={{ minHeight: "200px" }}>
