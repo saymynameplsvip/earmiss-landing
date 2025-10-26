@@ -32,7 +32,7 @@ export default function QueryPage() {
       <div className="min-h-dvh flex flex-col">
         <div className="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full px-5 pb-5">
           <main className="flex-grow w-full">
-            <Editor data={data} loading={isLoading} onChange={change} editorBlock="editorjs" />
+            <Editor data={data} loading={isLoading} onChange={change} error={error} editorBlock="editorjs" />
           </main>
         </div>
       </div>

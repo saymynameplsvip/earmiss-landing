@@ -74,7 +74,7 @@ function isCursorInsideFormula() {
   return false;
 }
 
-function Editor({ data, loading }) {
+function Editor({ data, loading, error }) {
   const editorRef = useRef(null);
   const containerRef = useRef(null);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -177,6 +177,25 @@ function Editor({ data, loading }) {
           }`}
         >
           {LOADING_PHRASES[currentPhraseIndex]}
+        </div>
+      </div>
+    );
+  }
+  console.log(error)
+  if (error && error.status === 404) {
+    return (
+      <div className="text-center py-20 text-[var(--text-color)]" style={{ minHeight: "200px" }}>
+        Конспект не найден.
+      </div>
+    );
+  } else if (error) {
+    return (
+      <div>
+        <div className="text-center text-red-600">
+          Ошибка загрузки конспекта: {error.code}
+        </div>
+        <div className="text-center text-red-600">
+          Отправьте скриншот в поддержку: <a href="https://t.me/EarmissSupport">@EarmissSupport</a>
         </div>
       </div>
     );
