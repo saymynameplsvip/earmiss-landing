@@ -9,7 +9,6 @@ export default function Header({ links = true }) {
       <div className="flex items-center gap-4">
         <Link to="/" className="flex items-center space-x-3">
           <div className="w-12 h-12 rounded-lg flex items-center justify-center">
-              {/* Светлая тема */}
               <img
                 className="block dark:hidden"
                 width="40"
@@ -17,7 +16,6 @@ export default function Header({ links = true }) {
                 src="/light-logo.svg"
                 alt="earmiss-logo"
               />
-              {/* Тёмная тема */}
               <img
                 className="hidden dark:block"
                 width="40"
@@ -27,7 +25,7 @@ export default function Header({ links = true }) {
               />
           </div>
           <div>
-            <div className="text-xl font-semibold">earmiss</div>
+            <div className="text-xl font-semibold text-[var(--accent-color)]">earmiss</div>
             <div className="text-sm">Бесплатный Telegram-бот: голос → конспект</div>
           </div>
         </Link>
@@ -46,7 +44,7 @@ export default function Header({ links = true }) {
           href={`https://t.me/EarmissBot?start=${utm_source}-${utm_medium}-${utm_campaign}-${utm_content}`}
           target="_blank"
           rel="noopener noreferrer"
-className="px-4 py-2 rounded-md bg-gradient-to-r from-[#FF5C50]/90 to-[#FF7B66] font-semibold text-white"
+className="px-4 py-2 rounded-md bg-gradient-to-r from-[#FF5C50]/90 to-[var(--accent-color)] font-semibold text-white"
         >
           Запустить в Telegram
         </a>

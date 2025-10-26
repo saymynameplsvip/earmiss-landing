@@ -42,7 +42,7 @@ export default function Home() {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <a href={`https://t.me/EarmissBot?start=${utm_source}-${utm_medium}-${utm_campaign}-${utm_content}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 px-5 py-3 rounded-lg btn-telega shadow font-semibold plausible-event-name=Open+Telegram+Bot">Открыть бота в Telegram</a>
-              <Link href="#how" className="px-5 py-3 rounded-lg glass border border-[rgba(255,111,97,0.8)] text-[var(--text-color)] font-semibold">Как это работает</Link>
+              <Link href="#how" className="px-5 py-3 rounded-lg glass border border-[rgba(255,111,97,0.8)] text-[var(--text-color)] font-semibold" style={{ opacity: 0.7 }}>Как это работает</Link>
           </div>
 
             <div className="mt-8 grid grid-cols-2 gap-3 text-sm text-[var(--text-color)]">

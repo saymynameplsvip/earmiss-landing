@@ -2,13 +2,14 @@
   --background-color: #FFF8F0;
   --text-color: #000;
   --text-muted: #5d6877;
+  --accent-color: #FF6F61;
 }
 
 .dark {
   --background-color: #1E1E1E;
   --text-color: #fff;
   --text-muted: rgb(63, 63, 63);
-
+  --accent-color: #D15E53;
 }
 
 body {
@@ -23,8 +24,8 @@ body {
 /* Общие элементы интерфейса (не специфично для редактора) */
 .glass { background: linear-gradient(135deg, rgba(255,111,97,0.2), rgba(255,248,231,0.1)); backdrop-filter: blur(6px); }
 .brand { color: rgba(255,111,97,0.8); }
-.accent { color: #FF6F61; }
-.btn-telega { background: linear-gradient(90deg, rgba(255,111,97,0.8), #FF6F61); transition: all 0.3s; color: #fff; }
+.accent { color: var(--accent-color); }
+.btn-telega { background: linear-gradient(90deg, rgba(255,111,97,0.8), var(--accent-color)); transition: all 0.3s; color: #fff; }
 .btn-telega:hover { opacity: 0.9; transform: translateY(-2px); }
 
 .note-section {
@@ -32,7 +33,7 @@ body {
   padding: 1rem;
   border-radius: 8px;
   margin-top: 15px;
-  border-left: 5px solid #FF6F61;
+  border-left: 5px solid var(--accent-color);
 }
 .note-section h3 { font-weight: 600; margin-bottom: 5px; }
 
