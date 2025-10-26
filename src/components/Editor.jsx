@@ -4,13 +4,12 @@ import Header from "@editorjs/header";
 import Table from "@editorjs/table";
 import Quote from "@editorjs/quote";
 import EditorjsList from "@editorjs/list";
-import Paragraph from "../editor/paragraph"; // твой кастомный параграф
 import katex from "katex";
 import renderMathInElement from "katex/contrib/auto-render";
 import "katex/dist/katex.min.css";
 import Formula from "../editor/formula";
+import "../editor.css";
 
-// Рендер всех формул через KaTeX
 function renderAllFormulas(container) {
   if (!container) return;
 
@@ -98,41 +97,77 @@ function Editor({ data, editorBlock }) {
 
     if (!editorRef.current) {
       const editor = new EditorJS({
+        readOnly: true,
         holder: editorBlock,
         autofocus: true,
         data,
         onReady: () => {
           renderAllFormulas(containerRef.current);
+
+          // Удаляем уже существующие caption в quote-блоках
+          const removeQuoteCaptions = () => {
+        if (!containerRef.current) return;
+        containerRef.current
+          .querySelectorAll(".cdx-quote__caption")
+          .forEach((el) => el.remove());
+          };
+
+          removeQuoteCaptions();
         },
         tools: {
           table: {
-            class: Table,
+        class: Table,
           },
           header: {
-            class: Header,
-            inlineToolbar: true,
+        class: Header,
+        inlineToolbar: true,
           },
           list: {
-            class: EditorjsList,
-            inlineToolbar: true,
+        class: EditorjsList,
+        inlineToolbar: true,
           },
           formula: {
-            class: Formula,
-            inlineToolbar: true
+        class: Formula,
+        inlineToolbar: true
           },
           quote: {
-            class: Quote,
-            inlineToolbar: true,
-            config: {
-              defaultStyle: 'unordered'
-            }
-          },
-          paragraph: {
-            class: Paragraph,
-            inlineToolbar: true,
-          },
+        class: Quote,
+        inlineToolbar: true,
+        config: {
+          defaultStyle: 'unordered'
+        }
+          }
         },
       });
+
+      // Наблюдатель, который удаляет появляющиеся caption в quote-блоках
+      if (containerRef.current) {
+        const captionObserver = new MutationObserver((mutations) => {
+          for (const m of mutations) {
+        for (const node of Array.from(m.addedNodes)) {
+          if (node.nodeType !== Node.ELEMENT_NODE) continue;
+          const el = /** @type {Element} */ (node);
+          if (el.matches && el.matches(".cdx-quote__caption")) {
+            el.remove();
+          }
+          el.querySelectorAll &&
+            el.querySelectorAll(".cdx-quote__caption").forEach((n) => n.remove());
+        }
+          }
+        });
+        captionObserver.observe(containerRef.current, { childList: true, subtree: true });
+
+        // Оборачиваем destroy, чтобы корректно отсоединять observer при уничтожении редактора
+        const originalDestroy = editor.destroy && editor.destroy.bind(editor);
+        editor.destroy = async function () {
+          try {
+        captionObserver.disconnect();
+          } catch {}
+          if (originalDestroy) {
+        await originalDestroy();
+          }
+        };
+      }
       editorRef.current = editor;
     }
 

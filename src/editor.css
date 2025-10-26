@@ -1,0 +1,227 @@
+/* Heading (ce-header) styles */
+.ce-header {
+  margin: 14px 0;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.2;
+  word-break: break-word;
+  outline: none;
+  padding: 6px 0;
+  caret-color: var(--text-color);
+  display: block;
+  font-size: var(--ce-header-default-size, 16px);
+}
+
+/* Different sizes by data-level used by the heading tool
+   Use a more specific selector to avoid being overridden. */
+.ce-header.h1, .ce-header[data-level="1"], h1.ce-header { font-size: 28px; font-weight: 600; }
+.ce-header.h2, .ce-header[data-level="2"], h2.ce-header { font-size: 22px; font-weight: 600; }
+.ce-header.h3, .ce-header[data-level="3"], h3.ce-header { font-size: 18px; font-weight: 600; }
+.ce-header.h4, .ce-header[data-level="4"], h4.ce-header { font-size: 16px; font-weight: 600; }
+.ce-header.h5, .ce-header[data-level="5"], h5.ce-header,
+.ce-header.h6, .ce-header[data-level="6"], h6.ce-header { font-size: 14px; font-weight: 600; }
+
+/* Placeholder support when empty */
+.ce-header:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-color);
+  font-style: italic;
+  pointer-events: none;
+  display: inline-block;
+}
+
+/* Ensure responsive sizes on small screens (override if needed) */
+@media (max-width: 480px) {
+  .ce-block__content .ce-header[data-level="1"] { font-size: 24px; }
+  .ce-block__content .ce-header[data-level="2"] { font-size: 20px; }
+  .ce-block__content .ce-header[data-level="3"] { font-size: 16px; }
+  .ce-block__content .ce-header[data-level="4"],
+  .ce-block__content .ce-header[data-level="5"],
+  .ce-block__content .ce-header[data-level="6"] { font-size: 14px; }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .ce-header.h1, .ce-header[data-level="1"], h1.ce-header  { font-size: 24px; }
+  .ce-header.h2, .ce-header[data-level="2"], h2.ce-header  { font-size: 20px; }
+  .ce-header.h3, .ce-header[data-level="3"], h3.ce-header  { font-size: 16px; }
+  .ce-header.h4, .ce-header[data-level="4"], h4.ce-header,
+  .ce-header.h5, .ce-header[data-level="5"], h5.ce-header,
+  .ce-header.h6, .ce-header[data-level="6"], h6.ce-header  { font-size: 14px; }
+}
+
+.ce-block__content .cdx-quote {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-left: 3px solid rgba(55, 53, 47, 0.12);
+  background: rgba(55, 53, 47, 0.02);
+  border-radius: 6px;
+  display: block;
+  -webkit-font-smoothing:antialiased;
+}
+
+.ce-block__content .cdx-quote .cdx-input {
+  outline: none;
+  box-sizing: border-box;
+}
+
+.ce-block__content .cdx-quote__text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.58;
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.ce-block__content .cdx-quote__caption {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-color);
+  line-height: 1.4;
+}
+
+/* Show placeholder text from data-placeholder when caption is empty */
+.ce-block__content .cdx-quote__caption:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-color);
+  font-style: italic;
+  pointer-events: none;
+  display: inline-block;
+}
+
+.ce-paragraph {
+  color: var(--text-color);
+}
+
+/* Small responsive tweak */
+@media (max-width: 480px) {
+  .ce-block__content .cdx-quote {
+   padding-left: 12px;
+   padding-right: 12px;
+  }
+  .ce-block__content .cdx-quote__text { font-size: 14px; }
+  .ce-block__content .cdx-quote__caption { font-size: 12px; }
+}
+
+/* List / katex styles for editor content inside .ce-block */
+.ce-block__content .cdx-list.cdx-list-unordered {
+  margin: 12px 0 18px;
+  padding-left: 20px;
+  color: var(--text-color);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* List items and marker color */
+.ce-block__content .cdx-list__item {
+  margin: 6px 0;
+}
+
+/* Bullet appearance */
+.ce-block__content .cdx-list.cdx-list-unordered {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+.ce-block__content .cdx-list-unordered.cdx-list__item-children {
+  list-style-type: circle;
+  margin-top: 6px;
+  padding-left: 18px;
+}
+
+/* Item content block (labels / readonly content) */
+.ce-block__content .cdx-list__item-content {
+  display: inline-block;
+  width: auto;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: var(--text-color);
+  box-sizing: border-box;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Readonly pieces are visually distinct but subdued */
+.ce-block__content .cdx-list__item-content[contenteditable="false"] {
+  cursor: default;
+  user-select: text;
+  opacity: 0.95;
+}
+
+/* Emphasis inside list items */
+.ce-block__content .cdx-list__item-content b,
+.ce-block__content .cdx-list__item-content strong {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Katex inline formula styling to integrate with text */
+.ce-block__content .katex {
+  display: inline-block;
+  vertical-align: middle;
+  background: rgba(55, 53, 47, 0.03);
+  padding: 2px 6px;
+  margin: 0 4px;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 0.95em;
+  line-height: 1;
+  color: var(--text-color);
+}
+
+/* Ensure KaTeX HTML portion doesn't overflow line height */
+.ce-block__content .katex .katex-html,
+.ce-block__content .katex .katex-mathml {
+  vertical-align: middle;
+}
+
+/* Slight visual separation for nested lists */
+.ce-block__content .cdx-list__item-children .cdx-list__item-content {
+  background: rgba(55, 53, 47, 0.01);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .ce-block__content .cdx-list.cdx-list-unordered { font-size: 14px; padding-left: 16px; }
+  .ce-block__content .cdx-list__item-content { padding: 5px 8px; border-radius: 6px; }
+  .ce-block__content .katex { padding: 1px 5px; font-size: 0.92em; margin: 0 3px; }
+}
+
+/* Minimalist quote styling: no borders; color follows --text-color */
+.ce-block .ce-block__content .cdx-quote {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 8px 12px;
+  margin: 10px 0;
+  border-radius: 4px;
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Quoted text uses the theme color */
+.ce-block .ce-block__content .cdx-quote__text {
+  margin: 0;
+  padding: 5px 5px 5px 5px;
+  border-radius: 8px;
+  background: transparent;
+  font-style: italic;
+  color: var(--text-color);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+@media (max-width: 480px) {
+  .ce-block .ce-block__content .cdx-quote {
+    padding: 10px;
+    font-size: 14px;
+  }
+}

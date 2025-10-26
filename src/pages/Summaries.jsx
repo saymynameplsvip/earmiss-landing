@@ -26,7 +26,7 @@ export default function QueryPage() {
 
   console.log(data);
 
-  if (isLoading) return null;
+  if (isLoading || error) return null;
 
   return (
     <div>
