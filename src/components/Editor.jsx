@@ -135,6 +135,10 @@ function Editor({ data, editorBlock }) {
         inlineToolbar: true,
         config: {
           defaultStyle: 'unordered'
+        },
+        table: {
+          class: Table,
+          inlineToolbar: true
         }
           }
         },

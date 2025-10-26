@@ -9,7 +9,22 @@ export default function Header({ links = true }) {
       <div className="flex items-center gap-4">
         <Link to="/" className="flex items-center space-x-3">
           <div className="w-12 h-12 rounded-lg flex items-center justify-center">
-            <img width="40" height="40" src="/dark-logo.svg" alt="earmiss-logo" />
+              {/* Светлая тема */}
+              <img
+                className="block dark:hidden"
+                width="40"
+                height="40"
+                src="/light-logo.svg"
+                alt="earmiss-logo"
+              />
+              {/* Тёмная тема */}
+              <img
+                className="hidden dark:block"
+                width="40"
+                height="40"
+                src="/dark-logo.svg"
+                alt="earmiss-logo"
+              />
           </div>
           <div>
             <div className="text-xl font-semibold">earmiss</div>

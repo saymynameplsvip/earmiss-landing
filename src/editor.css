@@ -121,6 +121,10 @@
   margin: 6px 0;
 }
 
+.cdx-list__item::before {
+  color: var(--text-color);
+}
+
 /* Bullet appearance */
 .ce-block__content .cdx-list.cdx-list-unordered {
   list-style-type: disc;
@@ -185,6 +189,8 @@
   padding-right: 8px;
 }
 
+
+
 /* Mobile adjustments */
 @media (max-width: 480px) {
   .ce-block__content .cdx-list.cdx-list-unordered { font-size: 14px; padding-left: 16px; }
@@ -210,7 +216,7 @@
 /* Quoted text uses the theme color */
 .ce-block .ce-block__content .cdx-quote__text {
   margin: 0;
-  padding: 5px 5px 5px 5px;
+  padding: 50px;
   border-radius: 8px;
   background: transparent;
   font-style: italic;
@@ -224,4 +230,10 @@
     padding: 10px;
     font-size: 14px;
   }
+}
+
+
+/* Table styles for editor content inside .ce-block */
+.tc-cell {
+  color: var(--text-color);
 }

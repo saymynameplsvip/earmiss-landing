@@ -34,7 +34,6 @@ export default class Formula {
     this.wrapper.appendChild(this.editor);
 
     if (!this.readOnly) {
-      // При фокусе — показать сырой LaTeX
       this.editor.addEventListener("focus", () => {
         if (this.isRendered) {
           this.editor.innerText = this.data.text;
@@ -55,18 +54,34 @@ export default class Formula {
     return this.wrapper;
   }
 
-  renderFormula() {
-    if (this.readOnly || !this.data.text.trim()) return;
+renderFormula() {
+  if (!this.data.text.trim()) return;
 
-    try {
-      const html = katex.renderToString(this.data.text, { displayMode: true });
-      this.editor.innerHTML = html;
-      this.isRendered = true;
-    } catch (err) {
-      console.error("KaTeX render error:", err);
-      this.editor.innerText = this.data.text; // fallback
+  try {
+    const html = katex.renderToString(this.data.text, { displayMode: true });
+
+    // Создаём контейнер для KaTeX один раз
+    if (!this.katexWrapper) {
+      this.katexWrapper = document.createElement("div");
+      this.katexWrapper.classList.add("cdx-formula__rendered");
+      this.wrapper.appendChild(this.katexWrapper);
     }
+
+    // Вставляем формулу
+    this.katexWrapper.innerHTML = html;
+    this.isRendered = true;
+
+    // Убираем текст из редактора
+    this.editor.innerText = "";
+
+  } catch (err) {
+    console.error("KaTeX render error:", err);
+    // Если ошибка — оставляем текст для редактирования
+    this.editor.innerText = this.data.text;
   }
+}
+
+
 
   save() {
     return {

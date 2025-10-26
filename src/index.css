@@ -1,14 +1,11 @@
 :root {
   --background-color: #FFF8F0;
-  --note-section-background-color: #fdfdfd;
-  --text-color: #1F2937;
+  --text-color: #000;
   --text-muted: #5d6877;
-  
 }
 
 .dark {
   --background-color: #1E1E1E;
-  --note-section-background-color: #1F2937;
   --text-color: #fff;
   --text-muted: rgb(63, 63, 63);
 
@@ -27,7 +24,7 @@ body {
 .glass { background: linear-gradient(135deg, rgba(255,111,97,0.2), rgba(255,248,231,0.1)); backdrop-filter: blur(6px); }
 .brand { color: rgba(255,111,97,0.8); }
 .accent { color: #FF6F61; }
-.btn-telega { background: linear-gradient(90deg, rgba(255,111,97,0.8), #FF6F61); transition: all 0.3s; }
+.btn-telega { background: linear-gradient(90deg, rgba(255,111,97,0.8), #FF6F61); transition: all 0.3s; color: #fff; }
 .btn-telega:hover { opacity: 0.9; transform: translateY(-2px); }
 
 .note-section {
