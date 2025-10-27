@@ -24,7 +24,13 @@ export default function QueryPage() {
     retry: 2,
   });
 
-  console.log(data);
+  message.blocks.unshift({
+    "data": {
+        "text": message.name,
+        "level": 1
+    },
+    "type": "header"
+  });
 
   return (
     <div>
