@@ -5,10 +5,11 @@ import Footer from "../components/Footer";
 import { api } from "../api/axiosInstance";
 import Editor from "../components/Editor";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
 const fetchSummary = async (uuid) => {
   const { data } = await api.get(`/summaries/${uuid}`);
-  return data.message;
+  return data;
 };
 
 
@@ -24,9 +25,13 @@ export default function QueryPage() {
     retry: 2,
   });
 
-  message.blocks.unshift({
+  useEffect(() => {
+    document.title = data.name;
+  }, [data.name]);
+
+  data.message.blocks.unshift({
     "data": {
-        "text": message.name,
+        "text": data.name,
         "level": 1
     },
     "type": "header"
@@ -38,7 +43,7 @@ export default function QueryPage() {
       <div className="min-h-dvh flex flex-col">
         <div className="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full px-5 pb-5">
           <main className="flex-grow w-full">
-            <Editor data={data} loading={isLoading} onChange={change} error={error} editorBlock="editorjs" />
+            <Editor data={data.message} loading={isLoading} onChange={change} error={error} editorBlock="editorjs" />
           </main>
         </div>
       </div>
