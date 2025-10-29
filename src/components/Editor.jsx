@@ -4,6 +4,7 @@ import Header from "@editorjs/header";
 import Table from "@editorjs/table";
 import Quote from "@editorjs/quote";
 import EditorjsList from "@editorjs/list";
+import Delimiter from '@editorjs/delimiter';
 import katex from "katex";
 import renderMathInElement from "katex/contrib/auto-render";
 import "katex/dist/katex.min.css";
@@ -115,12 +116,13 @@ function Editor({ data, loading, error }) {
           list: { class: EditorjsList, inlineToolbar: true },
           formula: { class: Formula, inlineToolbar: true },
           quote: { class: Quote, inlineToolbar: true },
+          delimiter: { class: Delimiter, inlineToolbar: true}
         },
         onReady: () => {
           renderAllFormulas(containerRef.current);
-          containerRef.current
-            .querySelectorAll(".cdx-quote__caption")
-            .forEach((el) => el.remove());
+          // containerRef.current
+          //   .querySelectorAll(".cdx-quote__caption")
+          //   .forEach((el) => el.remove());
         },
       });
 

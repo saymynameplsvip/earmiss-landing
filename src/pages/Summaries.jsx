@@ -9,14 +9,26 @@ import { useEffect } from "react";
 
 const fetchSummary = async (uuid) => {
   const { data } = await api.get(`/summaries/${uuid}`);
+
+  // Проверяем, что message и blocks существуют
+  if (data?.message?.blocks) {
+    data.message.blocks.unshift({
+      type: "header",
+      data: {
+        text: data.name,
+        level: 1
+      }
+    });
+  }
+
   return data;
 };
-
 
 export default function QueryPage() {
   const { uuid } = useParams();
 
-  const change = () => { };
+  // Функция onChange для Editor
+  const handleEditorChange = () => {};
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["summary", uuid],
@@ -25,28 +37,27 @@ export default function QueryPage() {
     retry: 2,
   });
 
+  // Устанавливаем title безопасно
   useEffect(() => {
-    document.title = data.name;
-  }, [data.name]);
-
-  data.message.blocks.unshift({
-    "data": {
-        "text": data.name,
-        "level": 1
-    },
-    "type": "header"
-  });
+    if (data?.name) {
+      document.title = data.name;
+    }
+  }, [data?.name]);
 
   return (
     <div>
       <Header authControl={true} />
-      <div className="min-h-dvh flex flex-col">
-        <div className="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto w-full px-5 pb-5">
-          <main className="flex-grow w-full">
-            <Editor data={data.message} loading={isLoading} onChange={change} error={error} editorBlock="editorjs" />
+          <main className="flex-grow w-full flex justify-center">
+            <div className="w-full max-w-4xl"> {/* Добавляем ограничение по ширине */}
+              <Editor
+                data={data?.message}
+                loading={isLoading}
+                onChange={handleEditorChange}
+                error={error}
+                editorBlock="editorjs"
+              />
+            </div>
           </main>
-        </div>
-      </div>
       <Footer />
     </div>
   );
