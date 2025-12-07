@@ -47,17 +47,17 @@ export default function QueryPage() {
   return (
     <div>
       <Header authControl={true} />
-          <main className="flex-grow w-full flex justify-center">
-            <div className="w-full max-w-4xl"> {/* Добавляем ограничение по ширине */}
-              <Editor
-                data={data?.message}
-                loading={isLoading}
-                onChange={handleEditorChange}
-                error={error}
-                editorBlock="editorjs"
-              />
-            </div>
-          </main>
+      <main className="flex-grow w-full flex justify-center">
+        <div className="w-full max-w-2xl px-4"> {/* Уменьшили max-w-4xl до max-w-2xl */}
+          <Editor
+            data={data?.message}
+            loading={isLoading}
+            onChange={handleEditorChange}
+            error={error}
+            editorBlock="editorjs"
+          />
+        </div>
+      </main>
       <Footer />
     </div>
   );

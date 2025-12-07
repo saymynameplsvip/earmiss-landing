@@ -1,5 +1,6 @@
 :root {
   --pragraph-color: #000;
+  --blockquote-color: #7b7b7b;
   --text-size: 16px;
   --list-dot-color: #cecece;
 }
@@ -174,38 +175,107 @@
 }
 
 
-/* Blockquote */
-
+/* Blockquote - Modern & Beautiful */
 
 .cdx-block.cdx-quote {
   position: relative;
-  border-left: 4px solid var(--blockquote-color);
-  background-color: var(--background-color);
-  padding: 0;
-  margin: 0;
-  border-radius: 0 4px 4px 0;
+  margin: 20px 0;
+    padding: 16px 20px;
+    border-radius: 12px;
   font-style: italic;
   height: auto;
+  /* Gradient background */
+    background: linear-gradient(135deg, rgba(255, 111, 97, 0.08), rgba(255, 111, 97, 0.04));
+  
+    /* Modern border */
+    border-left: 5px solid var(--accent-color);
+  
+    /* Subtle shadow for depth */
+    box-shadow: 0 2px 8px rgba(255, 111, 97, 0.12);
+  
+    /* Smooth transitions */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.cdx-block.cdx-quote:hover {
+  box-shadow: 0 4px 16px rgba(255, 111, 97, 0.18);
+  background: linear-gradient(135deg, rgba(255, 111, 97, 0.12), rgba(255, 111, 97, 0.08));
+  transform: translateX(4px);
+}
+
+/* Quote icon */
 .cdx-block.cdx-quote::before {
-    content: "";
+  content: "";
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 4px;
+  left: 8px;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FF6F61' stroke-width='2'%3E%3Cpath d='M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.063-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c-1 0-1 0-1 1s.008 1 1 1 1 0 1 0 1-.008 1-1v-1c0 1 0 1 1 1'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+    background-size: contain;
+    opacity: 0.6;
+    pointer-events: none;
 }
 
 .cdx-input.cdx-quote__text {
-    color: var(--text-color);
+  color: var(--text-color);
     background: transparent;
-    margin-left: 10px;
+  padding: 8px 12px;
+    margin-left: 8px;
     border: none;
-    font-family: inherit;
+  border-radius: 6px;
+  font-family: inherit;
     font-size: inherit;
-    line-height: inherit;
+  line-height: 1.6;
     height: auto !important;
     min-height: auto !important;
     max-height: none !important;
     width: 100%;
-}
+  font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+  }
+  
+  .cdx-input.cdx-quote__text:focus {
+    outline: none;
+    background: rgba(255, 111, 97, 0.06);
+    box-shadow: inset 0 0 0 2px rgba(255, 111, 97, 0.2);
+  }
+  
+  .cdx-input.cdx-quote__text::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+  
+  /* Dark mode adjustments */
+  .dark .cdx-block.cdx-quote {
+    background: linear-gradient(135deg, rgba(255, 111, 97, 0.06), rgba(255, 111, 97, 0.02));
+  }
+  
+  .dark .cdx-block.cdx-quote:hover {
+    background: linear-gradient(135deg, rgba(255, 111, 97, 0.1), rgba(255, 111, 97, 0.05));
+    box-shadow: 0 4px 16px rgba(255, 111, 97, 0.15);
+  }
+  
+  .dark .cdx-input.cdx-quote__text:focus {
+    background: rgba(255, 111, 97, 0.08);
+    box-shadow: inset 0 0 0 2px rgba(255, 111, 97, 0.25);
+  }
+  
+  @media (max-width: 768px) and (-webkit-touch-callout: none) {
+    .cdx-block.cdx-quote {
+      appearance: none;
+      -webkit-appearance: none;
+      margin: 16px 0;
+      padding: 12px 16px;
+  
+    .cdx-input.cdx-quote__text {
+      appearance: none;
+      -webkit-appearance: none;
+      font-size: 16px;
+      user-select: text;
+      -webkit-user-select: text;
+      -webkit-tap-highlight-color: transparent;
+    }
+    }
