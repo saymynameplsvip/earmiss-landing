@@ -10,7 +10,6 @@ import { useEffect } from "react";
 const fetchSummary = async (uuid) => {
   const { data } = await api.get(`/summaries/${uuid}`);
 
-  // Проверяем, что message и blocks существуют
   if (data?.message?.blocks) {
     data.message.blocks.unshift({
       type: "header",
@@ -48,7 +47,7 @@ export default function QueryPage() {
     <div>
       <Header authControl={true} />
       <main className="flex-grow w-full flex justify-center">
-        <div className="w-full max-w-2xl px-4"> {/* Уменьшили max-w-4xl до max-w-2xl */}
+        <div>
           <Editor
             data={data?.message}
             loading={isLoading}
