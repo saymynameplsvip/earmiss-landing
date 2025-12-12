@@ -47,7 +47,7 @@ export default function QueryPage() {
     <div>
       <Header authControl={true} />
       <main className="flex-grow w-full flex justify-center">
-        <div>
+        <div className="w-full max-w-10xl px-4">
           <Editor
             data={data?.message}
             loading={isLoading}
