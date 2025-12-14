@@ -166,12 +166,13 @@
 /* Table styles for editor content inside .ce-block */
 /* Контейнер таблицы */
 .tc-table {
-  width: 100%;
-  padding: 0%;
+  max-width: 800px;      /* или любую нужную ширину */
+  width: auto;            /* подстраивается под контент */
+  margin: 20px auto;      /* центр по горизонтали */
+  padding: 0;
   border: none;
   font-family: Arial, sans-serif;
-  margin: 20px 0;
-  overflow-x: auto;
+  overflow-x: auto;       /* если таблица шире контейнера */
   display: block;
 }
 

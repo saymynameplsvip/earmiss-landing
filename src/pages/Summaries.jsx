@@ -26,7 +26,6 @@ const fetchSummary = async (uuid) => {
 export default function QueryPage() {
   const { uuid } = useParams();
 
-  // Функция onChange для Editor
   const handleEditorChange = () => {};
 
   const { data, isLoading, error } = useQuery({
@@ -36,7 +35,6 @@ export default function QueryPage() {
     retry: 2,
   });
 
-  // Устанавливаем title безопасно
   useEffect(() => {
     if (data?.name) {
       document.title = data.name;
