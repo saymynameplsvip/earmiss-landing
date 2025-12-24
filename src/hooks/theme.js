@@ -3,11 +3,9 @@ import { createContext, useContext, useState, useEffect } from "react";
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  // 'system' = использовать системную тему, 'light' = светлая, 'dark' = тёмная
   const [theme, setTheme] = useState("system");
   const [systemTheme, setSystemTheme] = useState("light");
 
-  // Определяем системную тему
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     setSystemTheme(mediaQuery.matches ? "dark" : "light");
@@ -18,31 +16,26 @@ export const ThemeProvider = ({ children }) => {
     return () => mediaQuery.removeEventListener("change", handler);
   }, []);
 
-  // Переключение темы вручную
   const toggleTheme = () => {
     if (theme === "light") setTheme("dark");
     else if (theme === "dark") setTheme("light");
     else setTheme(systemTheme === "dark" ? "light" : "dark");
   };
 
-  // Вычисляем активную тему
   const activeTheme = theme === "system" ? systemTheme : theme;
 
-  // Применяем класс dark на <html> для Tailwind
   useEffect(() => {
     const root = window.document.documentElement;
     if (activeTheme === "dark") root.classList.add("dark");
     else root.classList.remove("dark");
   }, [activeTheme]);
 
-  // Опционально: логируем темы
   useEffect(() => {
     console.log("System theme:", systemTheme);
     console.log("Current theme:", theme);
     console.log("Active theme:", activeTheme);
   }, [theme, systemTheme, activeTheme]);
 
-  // Опционально: сохраняем выбор в localStorage
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);

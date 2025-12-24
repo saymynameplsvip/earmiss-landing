@@ -54,6 +54,8 @@ export default function QueryPage() {
             editorBlock="editorjs"
           />
         </div>
+        <script src="https://yandex.ru/ads/system/context.js" async></script>
+        <script data-page-id="18285870" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
       </main>
       <Footer />
     </div>
