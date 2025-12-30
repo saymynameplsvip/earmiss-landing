@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.42a3a11b.css",
-    "main.js": "/static/js/main.07d8949b.js",
-    "static/js/222.5f33aa21.chunk.js": "/static/js/222.5f33aa21.chunk.js",
+    "main.js": "/static/js/main.1a53cc67.js",
+    "static/js/222.cba7acc8.chunk.js": "/static/js/222.cba7acc8.chunk.js",
+    "static/media/index.cjs": "/static/media/index.f6d03137e8c9dd0de04c.cjs",
     "static/media/KaTeX_AMS-Regular.ttf": "/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
     "static/media/KaTeX_Main-Bold.ttf": "/static/media/KaTeX_Main-Bold.8169508bf58f8bd92ad8.ttf",
@@ -58,6 +59,7 @@
     "static/media/KaTeX_Size1-Regular.woff": "/static/media/KaTeX_Size1-Regular.0108e89c9003e8c14ea3.woff",
     "static/media/KaTeX_Size2-Regular.woff": "/static/media/KaTeX_Size2-Regular.3a99e70aee4076660d38.woff",
     "static/media/KaTeX_Size4-Regular.woff": "/static/media/KaTeX_Size4-Regular.aeffd8025cba3647f1a6.woff",
+    "static/media/fraction.cjs": "/static/media/fraction.7992481f3d8339b77604.cjs",
     "static/media/KaTeX_Size1-Regular.woff2": "/static/media/KaTeX_Size1-Regular.6eec866c69313624be60.woff2",
     "static/media/KaTeX_Size2-Regular.woff2": "/static/media/KaTeX_Size2-Regular.2960900c4f271311eb36.woff2",
     "static/media/KaTeX_Size4-Regular.woff2": "/static/media/KaTeX_Size4-Regular.e418bf257af1052628d8.woff2",
@@ -65,11 +67,11 @@
     "static/media/KaTeX_Size3-Regular.woff": "/static/media/KaTeX_Size3-Regular.7947224e8a9914fa332b.woff",
     "static/media/KaTeX_Size3-Regular.woff2": "/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "main.42a3a11b.css.map": "/static/css/main.42a3a11b.css.map",
-    "main.07d8949b.js.map": "/static/js/main.07d8949b.js.map",
-    "222.5f33aa21.chunk.js.map": "/static/js/222.5f33aa21.chunk.js.map"
+    "main.1a53cc67.js.map": "/static/js/main.1a53cc67.js.map",
+    "222.cba7acc8.chunk.js.map": "/static/js/222.cba7acc8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.42a3a11b.css",
-    "static/js/main.07d8949b.js"
+    "static/js/main.1a53cc67.js"
   ]
 }
